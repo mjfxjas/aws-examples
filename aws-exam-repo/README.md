@@ -1,10 +1,10 @@
 # AWS CCP Static Quiz
 
-Single-page quiz reader I use to cram for the AWS Cloud Practitioner/Associate exams. Everything runs client-side so it can be dropped onto an S3 static website bucket with no frameworks.
+Client-side quiz reader for AWS practice exams. Runs as static HTML, JavaScript, and CSS.
 
 ## Features
 
-- Dropdown auto-populates from `assets/exams.json`, making it easy to swap in new practice files.
+- Exam dropdown reads `assets/exams.json`.
 - Markdown parser handles bullet answers, `<details>` spoiler blocks, and multi-answer keys (e.g., `B, E`).
 - Lightweight vanilla JS + CSS; no build step, dependencies, or tracking scripts.
 
@@ -34,10 +34,4 @@ Alternatively upload the folder to an S3 bucket, enable static hosting, and poin
 
 - Set `Cache-Control: public, max-age=60` for HTML so changes propagate quickly, but feel free to cache static assets longer.
 - Deny public listing on the bucket; the site only needs `GetObject` on the exact files.
-- Use CloudFront invalidations sparingly—version file names if you want instant updates.
-
-## Next Improvements
-
-- Add keyboard shortcuts for next/previous question.
-- Persist answer choices in `localStorage` so I can resume mid-exam.
-- Build a headless grader script to track weak domains over time.
+- Version asset filenames or invalidate changed files when publishing updates.
